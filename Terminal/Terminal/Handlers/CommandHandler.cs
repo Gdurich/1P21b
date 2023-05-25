@@ -70,6 +70,10 @@ namespace Terminal.Handlers
             else 
                 return false;
         }
+        public List<TerminalRequest> GetCommandList() 
+        {
+            return terminalRequests;
+        }
         #endregion
     }
 }
