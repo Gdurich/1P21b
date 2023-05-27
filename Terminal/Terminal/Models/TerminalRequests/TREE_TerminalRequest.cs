@@ -13,7 +13,7 @@ namespace Terminal.Models.TerminalRequests
 
         public override void Execute(CommandHandler handler, string commandBody = "")
         {
-                string path = CurrentDirectoryPath;
+                string path = CommandHandler.CurrentDirectoryPath;
                 int indentSize = 4;
                 printTree(path, indentSize, "");
 
