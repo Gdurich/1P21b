@@ -18,6 +18,6 @@ while (true)
 void Init()
 {
     commandHandler
-        .AddCommandObject(new CD_TerminalRequest());
-        commandHandler.AddCommandObject(new Append());
+        .AddCommandObject(new CD_TerminalRequest())
+        .AddCommandObject(new Append());
 }
