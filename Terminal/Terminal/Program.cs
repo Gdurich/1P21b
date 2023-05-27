@@ -19,4 +19,5 @@ void Init()
 {
     commandHandler
         .AddCommandObject(new CD_TerminalRequest());
+        commandHandler.AddCommandObject(new Append());
 }
