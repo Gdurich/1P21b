@@ -1,4 +1,5 @@
-﻿using Terminal.Handlers;
+﻿using System.ComponentModel;
+using Terminal.Handlers;
 using Terminal.Helpers;
 using Terminal.Models.TerminalRequests.Base;
 
@@ -17,8 +18,8 @@ namespace Terminal.Models.TerminalRequests
                 switch (commandBody)
                 {
                     case "":
-              
-                        throw new Exception("Enter command body");
+                        Console.WriteLine(CommandHandler.CurrentDirectoryPath);
+                        break;
                     case "..":
                         if (!handler.SetCurrentDirectory(CommandHandler.CurrentDirectoryPath.Substring(0, CommandHandler.CurrentDirectoryPath.LastIndexOf('\\')))) throw new Exception("Directory not exists");
                         break;
@@ -26,14 +27,6 @@ namespace Terminal.Models.TerminalRequests
                         if (!handler.SetCurrentDirectory(commandBody)) throw new Exception("Directory not exists");
                         break;
                 }
-                //if (commandBody == "") throw new Exception("Enter command body");
-                //if (commandBody == "..")
-                //{
-                //    if (!handler.SetCurrentDirectory(CommandHandler.CurrentDirectoryPath.Substring(0, CommandHandler.CurrentDirectoryPath.LastIndexOf('\\')))) throw new Exception("Directory not exists");
-                //    return;
-                //}
-                //if (!handler.SetCurrentDirectory(commandBody)) throw new Exception("Directory not exists");
-
             }
             catch (Exception ex)
             {
