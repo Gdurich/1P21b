@@ -19,5 +19,8 @@ void Init()
 {
     commandHandler
         .AddCommandObject(new CD_TerminalRequest())
-        .AddCommandObject(new Append());
+        .AddCommandObject(new Append())
+        .AddCommandObject(new TREE_TerminalRequest())
+        .AddCommandObject(new REPLACE_TerminalRequest())
+        .AddCommandObject(new REWRITE_TerminalRequest());
 }
