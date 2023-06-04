@@ -16,7 +16,36 @@ namespace Terminal.Models.TerminalRequests
         }
         public override void Execute(CommandHandler handler, string commandBody = "")
         {
-            Console.WriteLine("Lox");
+            Console.OutputEncoding = Encoding.UTF8;
+
+            Console.Write("Введіть шлях до файлу: ");
+            string filePath = Console.ReadLine();
+
+            try
+            {
+                byte[] fileBytes = File.ReadAllBytes(filePath);
+                string binaryString = ConvertToBinary(fileBytes);
+                Console.WriteLine("Бінарний код файлу:");
+                Console.WriteLine(binaryString);
+            }
+            catch (IOException e)
+            {
+                Console.WriteLine($"Помилка при читанні файлу: {e.Message}");
+            }
+
+            Console.WriteLine("Натисніть будь-яку клавішу для завершення...");
+            Console.ReadKey();
         }
+
+        static string ConvertToBinary(byte[] bytes)
+        {
+            StringBuilder binaryStringBuilder = new StringBuilder();
+            foreach (byte b in bytes)
+            {
+                binaryStringBuilder.Append(Convert.ToString(b, 2).PadLeft(8, '0'));
+            }
+            return binaryStringBuilder.ToString();
+        }
+
     }
 }
