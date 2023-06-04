@@ -18,6 +18,9 @@ while (true)
 void Init()
 {
     commandHandler
+        .AddCommandObject(new CD_TerminalRequest());
+    commandHandler
+        .AddCommandObject(new printbin());
         .AddCommandObject(new CD_TerminalRequest())
         .AddCommandObject(new Append());
 }
