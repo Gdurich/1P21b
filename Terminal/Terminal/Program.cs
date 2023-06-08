@@ -1,5 +1,6 @@
 ﻿using Terminal.Handlers;
 using Terminal.Models.TerminalRequests;
+using Terminal.Models.TerminalRequests.Base;
 
 CommandHandler commandHandler = new CommandHandler(); ;
 Init();
@@ -19,4 +20,6 @@ void Init()
 {
     commandHandler
         .AddCommandObject(new CD_TerminalRequest());
+    commandHandler
+        .AddCommandObject(new ZipCommand());
 }
