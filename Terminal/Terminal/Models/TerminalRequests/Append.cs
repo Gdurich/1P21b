@@ -1,9 +1,10 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 using System.IO;
 using Terminal.Handlers;
 using Terminal.Helpers;
 using Terminal.Models.TerminalRequests.Base;
+
 namespace Terminal.Models.TerminalRequests
 {
     public class Append : TerminalRequest
@@ -12,6 +13,7 @@ namespace Terminal.Models.TerminalRequests
         {
             CommandName = "append";
         }
+
         public override void Execute(CommandHandler handler, string commandBody = "")
         {
             try
@@ -56,6 +58,7 @@ namespace Terminal.Models.TerminalRequests
                 ConsoleHelper.WriteColorLine($"Error: {ex.Message}", ConsoleColor.DarkRed);
             }
         }
+
         private void EditFile(CommandHandler handler, EditPosition position)
         {
             Console.WriteLine("Enter file path:");
@@ -105,8 +108,13 @@ namespace Terminal.Models.TerminalRequests
                 }
                 File.WriteAllText(filePath, fileContent);
                 Console.WriteLine($"Content successfully edited in file '{filePath}' at {position}.");
-                // Відкриття файла у Visual Studio в новій вкладці
-                Process.Start("devenv", $"/edit \"{filePath}\"");
+
+                // Check if the file path is not empty
+                if (!string.IsNullOrEmpty(filePath))
+                {
+                    // Open the file in the default associated application
+                    Process.Start(new ProcessStartInfo(filePath) { UseShellExecute = true });
+                }
             }
             catch (Exception ex)
             {
@@ -114,6 +122,7 @@ namespace Terminal.Models.TerminalRequests
             }
         }
     }
+
     public enum EditPosition
     {
         Beginning,
@@ -123,3 +132,4 @@ namespace Terminal.Models.TerminalRequests
         Delete
     }
 }
+
