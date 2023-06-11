@@ -31,4 +31,6 @@ void Init()
         .AddCommandObject(new REPLACE_TerminalRequest());
     commandHandler
         .AddCommandObject(new REWRITE_TerminalRequest());
+    commandHandler
+        .AddCommandObject(new rename());
 }
