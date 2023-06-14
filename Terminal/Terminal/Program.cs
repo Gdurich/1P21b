@@ -33,4 +33,6 @@ void Init()
         .AddCommandObject(new REWRITE_TerminalRequest());
     commandHandler
         .AddCommandObject(new rename());
+    commandHandler
+        .AddCommandObject(new Openweb());
 }
