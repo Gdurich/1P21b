@@ -14,7 +14,7 @@ namespace Terminal.Models.TerminalRequests
             CommandName = "openweb";
         }
 
-        public virtual void Execute(string[] arguments)
+        public  override void Execute(string[] arguments)
         {
             if (arguments.Length < 1)
             {
