@@ -35,4 +35,6 @@ void Init()
         .AddCommandObject(new rename());
     commandHandler
         .AddCommandObject(new Openweb());
+    commandHandler
+       .AddCommandObject(new Sisinfo());
 }
